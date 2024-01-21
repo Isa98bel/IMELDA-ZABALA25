@@ -1,0 +1,40 @@
+# Definición de la clase base "Vehiculo"
+class Vehiculo:
+    def __init__(self, marca):
+        self.marca = marca
+
+    def sonido(self):
+        pass
+
+# Definición de la clase derivada "Auto" que hereda de "Vehiculo"
+class Auto(Vehiculo):
+    def sonido(self):
+        return f"{self.marca} hace el sonido Vroom!"
+
+# Definición de la clase derivada "Bicicleta" que hereda de "Vehiculo"
+class Bicicleta(Vehiculo):
+    def sonido(self):
+        return f"{self.marca} hace el sonido Ding Ding!"
+
+# Ejemplo de encapsulación
+class Moto(Vehiculo):
+    def __init__(self, marca, modelo):
+        super().__init__(marca)
+        self.__modelo = modelo  # Atributo privado
+
+    def sonido(self):
+        return f"{self.marca} {self.__modelo} acelera por la carretera."
+
+# Función polimórfica
+def hacer_sonar_vehiculo(vehiculo):
+    return vehiculo.sonido()
+
+# Crear instancias de las clases
+mi_auto = Auto("Toyota")
+mi_bicicleta = Bicicleta("Trek")
+mi_moto = Moto("Honda", "CBR")
+
+# Llamar al método sonido de las instancias
+print(hacer_sonar_vehiculo(mi_auto))       # Output: Toyota hace el sonido Vroom!
+print(hacer_sonar_vehiculo(mi_bicicleta))  # Output: Trek hace el sonido Ding Ding!
+print(hacer_sonar_vehiculo(mi_moto))       # Output: Honda CBR acelera por la carretera.
